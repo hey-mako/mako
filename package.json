@@ -4,13 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "start": "node index.js",
+    "test": "xo && echo \"Error: no test specified\" && exit 0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jasonwalsh/prototype.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/jasonwalsh/prototype.git",
+  "author": "jasonwalsh <rightlag@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jasonwalsh/prototype/issues"
@@ -18,5 +16,11 @@
   "homepage": "https://github.com/jasonwalsh/prototype#readme",
   "dependencies": {
     "botkit": "^0.6.13"
+  },
+  "devDependencies": {
+    "xo": "^0.20.3"
+  },
+  "xo": {
+    "prettier": true
   }
 }
