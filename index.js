@@ -1,5 +1,6 @@
 const Botkit = require('botkit');
 
+/* eslint-disable camelcase */
 const controller = Botkit.facebookbot({
 	access_token: process.env.ACCESS_TOKEN,
 	verify_token: process.env.VERIFY_TOKEN,
