@@ -16,9 +16,7 @@ resource "heroku_app" "default" {
     "heroku/nodejs",
   ]
 
-  config_vars {
-    PORT = 3000
-  }
+  config_vars = "${var.config_vars}"
 
   name   = "${random_pet.default.id}"
   region = "${var.region}"
