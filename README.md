@@ -7,3 +7,7 @@ This repository uses Docker [Community Edition](https://www.docker.com/community
     $ docker-compose up -d
 
 The `-d` flag instructs Docker to run the containers in 'detached' mode.
+
+## Testing
+
+    $ docker-compose -f docker-compose.test.yml up

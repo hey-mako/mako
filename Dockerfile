@@ -1,7 +1,8 @@
 FROM node:alpine
+ARG NODE_ENV=production
 WORKDIR /srv
 COPY package.json .
-RUN yarn install --frozen-lockfile --no-bin-links --silent
+RUN NODE_ENV=$NODE_ENV yarn install --frozen-lockfile --silent
 COPY . .
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD [ "yarn", "run", "start" ]
