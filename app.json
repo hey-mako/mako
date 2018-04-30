@@ -1,0 +1,9 @@
+{
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "name": "prototype",
+  "repository": "https://github.com/jasonwalsh/prototype"
+}
