@@ -4,6 +4,8 @@
       "url": "heroku/nodejs"
     }
   ],
-  "name": "prototype",
-  "repository": "https://github.com/jasonwalsh/prototype"
+  "name": "mako",
+  "repository": "https://github.com/mako-ai/mako",
+  "stack": "heroku-18",
+  "website": "https://mako-ai.github.io/"
 }
