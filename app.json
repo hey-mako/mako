@@ -6,6 +6,5 @@
   ],
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
-  "stack": "container",
   "website": "https://mako-ai.github.io/"
 }
