@@ -16,7 +16,7 @@ controller.setupWebserver(process.env.PORT, err => {
 
 	const webserver = controller.webserver;
 
-	if (process.env.deploy === 'review') {
+	if (process.env.deployIn === 'review') {
 		// Only allow the test user created to run through these requests
 		webserver.use(bodyParser.json({verify: verifyTestUser}));
 	}
@@ -38,7 +38,7 @@ controller.hears(['hello'], 'message_received', (bot, message) => {
 	bot.reply(message, 'Hey there.');
 });
 
-function verifyTestUser(req, res, buf, encoding) {
+function verifyTestUser(req) {
 	if (req.body.sender.id !== process.env.TEST_USER_ID) {
 		throw new Error('Not a valid user');
 	}

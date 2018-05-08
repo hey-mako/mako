@@ -3,22 +3,21 @@ const request = require('request');
 const reviewAppId = '106106383597456';
 const fbBaseUrl = 'https://graph.facebook.com/v2.12';
 
-
 const herokuAppName = process.env.HEROKU_APP_NAME;
 const callbackUrl = `https://${herokuAppName}.herokuapp.com`;
 
 const subOptions = {
-    uri: `${fbBaseUrl}/${reviewAppId}/subscriptions`,
+	uri: `${fbBaseUrl}/${reviewAppId}/subscriptions`,
 	method: 'POST',
 	qs: {
-		callback_url: callbackUrl,
+		callback_url: callbackUrl, // eslint-disable-line camelcase
 		object: 'page',
 		fields: 'messages',
-		verify_token: 'TOKEN'
-	}
+		verify_token: 'TOKEN', // eslint-disable-line camelcase
+	},
 };
 
-request(subOptions, (err, data) => {
+request(subOptions, err => {
 	if (err) {
 		throw new Error(err);
 	}
@@ -27,11 +26,11 @@ request(subOptions, (err, data) => {
 });
 
 const testUserOptions = {
-    uri: `${fbBaseUrl}/${reviewAppId}/accounts/test-users`,
+	uri: `${fbBaseUrl}/${reviewAppId}/accounts/test-users`,
 	method: 'POST',
 	qs: {
-		name: herokuAppName
-	}
+		name: herokuAppName,
+	},
 };
 
 request(testUserOptions, (err, data) => {
