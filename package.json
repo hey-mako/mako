@@ -19,6 +19,7 @@
     "botkit": "^0.6.13"
   },
   "devDependencies": {
+    "request": "^2.85.0",
     "xo": "^0.20.3"
   },
   "xo": {
