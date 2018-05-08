@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "xo && echo \"Error: no test specified\" && exit 0"
+    "test": "xo && echo \"Error: no test specified\" && exit 0",
+    "postdeploy": "node post-deploy.js"
   },
   "repository": "git+https://github.com/jasonwalsh/prototype.git",
   "author": "jasonwalsh <rightlag@gmail.com>",
