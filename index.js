@@ -18,7 +18,7 @@ controller.setupWebserver(process.env.PORT, err => {
 
 	if (process.env.deploy === 'review') {
 		// Only allow the test user created to run through these requests
-		webserver.use(bodyParser({verify: verifyTestUser}));
+		webserver.use(bodyParser.json({verify: verifyTestUser}));
 	}
 
 	controller.createWebhookEndpoints(controller.webserver, bot, () => {
