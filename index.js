@@ -1,4 +1,5 @@
 const Botkit = require('botkit');
+const bodyParser = require('body-parser');
 
 /* eslint-disable camelcase */
 const controller = Botkit.facebookbot({
@@ -12,6 +13,14 @@ controller.setupWebserver(process.env.PORT, err => {
 	if (err !== null) {
 		throw err;
 	}
+
+	const webserver = controller.webserver;
+
+	if (process.env.deploy === 'review') {
+		// Only allow the test user created to run through these requests
+		webserver.use(bodyParser({verify: verifyTestUser}));
+	}
+
 	controller.createWebhookEndpoints(controller.webserver, bot, () => {
 		console.log('Listening on port: ' + process.env.PORT);
 	});
@@ -28,3 +37,9 @@ controller.hears('howdy', 'message_received', (bot, message) => {
 controller.hears(['hello'], 'message_received', (bot, message) => {
 	bot.reply(message, 'Hey there.');
 });
+
+function verifyTestUser(req, res, buf, encoding) {
+	if (req.body.sender.id !== process.env.TEST_USER_ID) {
+		throw new Error('Not a valid user');
+	}
+}
