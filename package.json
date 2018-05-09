@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "xo && echo \"Error: no test specified\" && exit 0"
+    "test": "xo && echo \"Error: no test specified\" && exit 0",
+    "postdeploy": "node post-deploy.js"
   },
   "repository": "git+https://github.com/jasonwalsh/prototype.git",
   "author": "jasonwalsh <rightlag@gmail.com>",
@@ -15,9 +16,12 @@
   },
   "homepage": "https://github.com/jasonwalsh/prototype#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "botkit": "^0.6.13"
   },
   "devDependencies": {
+    "number-to-words": "^1.2.3",
+    "request": "^2.85.0",
     "xo": "^0.20.3"
   },
   "xo": {
