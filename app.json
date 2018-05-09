@@ -8,6 +8,6 @@
   "repository": "https://github.com/mako-ai/mako",
   "website": "https://mako-ai.github.io/",
   "scripts": {
-    "postdeploy": "yarn install & yarn run postdeploy"
+    "postdeploy": "yarn run postdeploy"
   }
 }
