@@ -1,9 +1,10 @@
 const request = require('request');
+const converter = require('number-to-words');
 
 const reviewAppId = process.env.APP_REVIEW_ID;
-const fbBaseUrl = 'https://graph.facebook.com/v2.12';
-
 const herokuAppName = process.env.HEROKU_APP_NAME;
+
+const fbBaseUrl = 'https://graph.facebook.com/v2.12';
 const callbackUrl = `https://${herokuAppName}.ngrok.io`;
 
 const subOptions = {
@@ -29,6 +30,7 @@ const testUserOptions = {
 	uri: `${fbBaseUrl}/${reviewAppId}/accounts/test-users`,
 	method: 'POST',
 	qs: {
+		name: normalizeBuldName(herokuAppName),
 		access_token: `${reviewAppId}|${process.env.APP_REVIEW_SECRET}`, // eslint-disable-line camelcase
 	},
 };
@@ -43,3 +45,12 @@ request(testUserOptions, (err, data) => {
 	process.env.TEST_USER_EMAIL = parsed.email;
 	console.log(`Test user created for ${parsed.email} on ${herokuAppName}`);
 });
+
+function normalizeBuldName(name) {
+	const prString = name.match(/\d+/g)[0];
+	const prInWords = converter.toWords(parseInt(prString, 10));
+	return name
+		.replace(prString, prInWords)
+		.replace(/-/g, ' ')
+		.trim();
+}
