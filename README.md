@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/jasonwalsh/prototype.svg?token=kDZcsygosGgqF2WJJ1jZ&branch=master)](https://travis-ci.com/jasonwalsh/prototype)
+[![Build Status](https://travis-ci.com/mako-ai/mako.svg?token=kDZcsygosGgqF2WJJ1jZ&branch=master)](https://travis-ci.com/mako-ai/mako)
 
 ## Docker
 
