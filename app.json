@@ -5,7 +5,16 @@
     }
   ],
   "env": {
-    "STAGING_ACCESS_TOKEN": {
+    "ACCESS_TOKEN": {
+      "required": true
+    },
+    "APP_REVIEW_ID": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "VERIFY_TOKEN": {
       "required": true
     }
   },
