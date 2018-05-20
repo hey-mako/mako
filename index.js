@@ -4,6 +4,8 @@ const Botkit = require('botkit');
 const controller = Botkit.facebookbot({
 	access_token: process.env.ACCESS_TOKEN,
 	verify_token: process.env.VERIFY_TOKEN,
+	debug: true,
+	log: true
 });
 
 const bot = controller.spawn({});
