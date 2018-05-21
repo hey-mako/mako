@@ -24,6 +24,10 @@ controller.on('facebook_optin', (bot, message) => {
 	bot.reply(message, 'Welcome to my application!');
 });
 
+controller.hears('howdy', 'message_received', (bot, message) => {
+	bot.reply(message, 'Yee Ha!');
+});
+
 controller.hears(['hello'], 'message_received', (bot, message) => {
 	bot.reply(message, 'Hey there.');
 });
