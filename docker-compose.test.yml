@@ -1,8 +1,8 @@
 services:
   sut:
     build:
-      args:
-        NODE_ENV: development
       context: .
     command: yarn run test
+    environment:
+      NODE_ENV: ~
 version: '3.6'

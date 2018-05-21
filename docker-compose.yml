@@ -6,8 +6,8 @@ services:
       PORT: '${PORT:-3000}'
       VERIFY_TOKEN: '${VERIFY_TOKEN:?err}'
     ports:
-    - 3000:3000
+      - 3000:3000
     volumes:
-    - .:/srv
-    - /srv/node_modules
+      - .:/srv
+      - /srv/node_modules
 version: '3.6'
