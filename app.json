@@ -12,5 +12,8 @@
   },
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
+  "scripts": {
+    "postdeploy": "pip install ansible"
+  },
   "website": "https://mako-ai.github.io/"
 }
