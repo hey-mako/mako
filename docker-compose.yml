@@ -1,13 +1,19 @@
+# Refer to https://dockr.ly/2suVjCl for information regarding the
+# env_file directive and the NODE_ENV environment variable.
+
 services:
   bot:
     build: .
+    env_file:
+      - .env
     environment:
       ACCESS_TOKEN: '${ACCESS_TOKEN:?err}'
       PORT: '${PORT:-3000}'
+      NODE_ENV: production
       VERIFY_TOKEN: '${VERIFY_TOKEN:?err}'
     ports:
-    - 3000:3000
+      - 3000:3000
     volumes:
-    - .:/srv
-    - /srv/node_modules
+      - .:/srv
+      - /srv/node_modules
 version: '3.6'
