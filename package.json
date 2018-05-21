@@ -15,10 +15,10 @@
   },
   "homepage": "https://github.com/jasonwalsh/prototype#readme",
   "dependencies": {
-    "ava": "^0.25.0",
     "botkit": "^0.6.13"
   },
   "devDependencies": {
+    "ava": "^0.25.0",
     "xo": "^0.20.3"
   },
   "xo": {
