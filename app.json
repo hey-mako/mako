@@ -1,9 +1,4 @@
 {
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    }
-  ],
   "env": {
     "ACCESS_TOKEN": {
       "required": true
