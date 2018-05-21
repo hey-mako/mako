@@ -10,6 +10,9 @@ const controller = Botkit.facebookbot({
 
 const bot = controller.spawn({});
 
+// Load bot profile settings
+require('./profile')(controller);
+
 controller.setupWebserver(process.env.PORT, err => {
 	if (err !== null) {
 		throw err;
