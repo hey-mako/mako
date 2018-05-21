@@ -133,6 +133,8 @@ typings/
 .travis.yml
 LICENSE
 Procfile
+docker-compose.test.yml
 docker-compose.yml
+heroku.yml
 terraform/
 yarn.lock
