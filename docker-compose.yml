@@ -9,7 +9,7 @@ services:
     environment:
       ACCESS_TOKEN: '${ACCESS_TOKEN:?err}'
       PORT: '${PORT:-3000}'
-      NODE_ENV: production
+      NODE_ENV: '${NODE_ENV:-production}'
       VERIFY_TOKEN: '${VERIFY_TOKEN:?err}'
     ports:
       - 3000:3000
