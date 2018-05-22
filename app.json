@@ -21,7 +21,7 @@
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
   "scripts": {
-    "postdeploy": "pip install ansible"
+    "postdeploy": "ansible-galaxy install mako-ai.messenger-bot-test-pipeline && ansible-playbook -i ansible/inventory ansible/site.yml"
   },
   "website": "https://mako-ai.github.io/"
 }
