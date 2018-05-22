@@ -1,9 +1,0 @@
----
-
-- hosts: all
-  connection: local
-  vars:
-    callback_url: https://{{ ansible_env.HEROKU_APP_NAME }}.herokuapp.com/facebook/receive
-    heroku_app_name: "{{ ansible_env.HEROKU_APP_NAME }}"
-  roles:
-    - mako-ai.messenger-bot-test-pipeline
