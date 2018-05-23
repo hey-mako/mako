@@ -11,10 +11,6 @@
     "ACCESS_TOKEN": {
       "required": true
     },
-    "ANSIBLE_ROLES_PATH": {
-      "required": true,
-      "value": "ansible"
-    },
     "HEROKU_APP_NAME": {
       "required": true
     },
