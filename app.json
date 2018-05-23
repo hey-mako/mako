@@ -25,7 +25,7 @@
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
   "scripts": {
-    "postdeploy": "ansible-galaxy install mako-ai.messenger-bot-test-pipeline && cd $ANSIBLE_ROLES_PATH && ansible-playbook -i inventory postdeploy.yml"
+    "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.messenger-bot-test-pipeline && cd $ANSIBLE_ROLES_PATH && ansible-playbook -i inventory postdeploy.yml"
   },
   "website": "https://mako-ai.github.io/"
 }
