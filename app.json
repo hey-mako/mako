@@ -20,7 +20,7 @@
     "ANSIBLE_ROLES_PATH": {
       "required": true,
       "value": "ansible"
-    },
+    }
   },
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
