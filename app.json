@@ -1,10 +1,36 @@
 {
   "buildpacks": [
     {
+      "url": "heroku/python"
+    },
+    {
       "url": "heroku/nodejs"
     }
   ],
+  "env": {
+    "ACCESS_TOKEN": {
+      "required": true
+    },
+    "HEROKU_API_KEY": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "VERIFY_TOKEN": {
+      "required": true
+    },
+    "FACEBOOK_APP_ID": {
+      "required": true
+    },
+    "FACEBOOK_APP_SECRET": {
+      "required": true
+    }
+  },
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
+  "scripts": {
+    "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.messenger-bot-test-pipeline && ansible-playbook -i ansible/inventory ansible/site.yml"
+  },
   "website": "https://mako-ai.github.io/"
 }
