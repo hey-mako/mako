@@ -25,6 +25,9 @@
     },
     "FACEBOOK_APP_SECRET": {
       "required": true
+    },
+    "WIT_AI_TOKEN": {
+      "required": true
     }
   },
   "name": "mako",

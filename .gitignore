@@ -66,3 +66,5 @@ typings/
 
 # .tfvars files
 *.tfvars
+
+.vscode

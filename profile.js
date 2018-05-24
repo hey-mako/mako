@@ -1,4 +1,5 @@
 module.exports = controller => {
+	controller.debug('Load profile settings');
 	controller.api.nlp.enable(process.env.WIT_AI_TOKEN);
 	controller.api.messenger_profile.greeting(
 		'The best way to find your next apartment'
