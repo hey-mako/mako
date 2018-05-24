@@ -11,21 +11,26 @@
     "ACCESS_TOKEN": {
       "required": true
     },
-    "ANSIBLE_ROLES_PATH": {
-      "required": true,
-      "value": "ansible"
+    "HEROKU_API_KEY": {
+      "required": true
     },
     "HEROKU_APP_NAME": {
       "required": true
     },
     "VERIFY_TOKEN": {
       "required": true
+    },
+    "FACEBOOK_APP_ID": {
+      "required": true
+    },
+    "FACEBOOK_APP_SECRET": {
+      "required": true
     }
   },
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
   "scripts": {
-    "postdeploy": "ansible-galaxy install -p \"$ANSIBLE_ROLES_PATH\" mako-ai.messenger-bot-test-pipeline && cd \"$ANSIBLE_ROLES_PATH\" && ansible-playbook -i inventory site.yml"
+    "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.messenger-bot-test-pipeline && ansible-playbook -i ansible/inventory ansible/site.yml"
   },
   "website": "https://mako-ai.github.io/"
 }
