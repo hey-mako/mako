@@ -9,8 +9,9 @@ const generateMessage = () => {
 		)
 		.addImage('https://i.imgur.com/2E3OEpc.png')
 		.addButton('Search', 'SEARCH')
-		.addBubble('New Listing', 'LISTER')
-		.addBubble('Subscriptions', 'SUBSCRIPTIONS');
+		.addButton('New Listing', 'LISTER')
+		.addButton('Subscriptions', 'SUBSCRIPTIONS')
+		.get();
 };
 
 module.exports = generateMessage();
