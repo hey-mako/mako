@@ -19,6 +19,7 @@ const bot = controller.spawn({});
 
 // Load bot profile settings
 require('./profile')(controller);
+require('./core')(controller);
 
 controller.setupWebserver(process.env.PORT, err => {
 	if (err !== null) {
@@ -27,15 +28,6 @@ controller.setupWebserver(process.env.PORT, err => {
 	controller.createWebhookEndpoints(controller.webserver, bot, () => {
 		console.log('Listening on port: ' + process.env.PORT);
 	});
-});
-
-// Hard skills
-controller.on('facebook_optin', (bot, message) => {
-	bot.reply(message, 'Welcome to my application!');
-});
-
-controller.hears(['hello'], 'message_received', (bot, message) => {
-	bot.reply(message, 'Hey there.');
 });
 
 // Dynamically load skills

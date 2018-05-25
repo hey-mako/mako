@@ -15,7 +15,8 @@
   },
   "homepage": "https://github.com/jasonwalsh/prototype#readme",
   "dependencies": {
-    "botkit": "^0.6.13"
+    "botkit": "^0.6.13",
+    "fb-message-builder": "^2.2.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
