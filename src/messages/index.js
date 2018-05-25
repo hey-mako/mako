@@ -1,3 +1,3 @@
 module.exports = {
-	onboard: require('./onboard')
+	onboard: require('./onboard'),
 };
