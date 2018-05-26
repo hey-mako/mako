@@ -33,7 +33,7 @@
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
   "scripts": {
-    "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.messenger-bot-test-pipeline && ansible-playbook -i ansible/inventory ansible/site.yml"
+    "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.facebook-messenger && ansible-playbook -i ansible/inventory ansible/site.yml"
   },
   "website": "https://mako-ai.github.io/"
 }
