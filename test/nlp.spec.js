@@ -1,5 +1,5 @@
 import test from 'ava';
-import nlp from '../libs/nlp';
+import nlp from '../src/libs/nlp';
 
 const rawMock = require('./mocks/message.json');
 

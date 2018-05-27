@@ -4,7 +4,7 @@
   connection: local
   tasks:
     - include_role:
-        name: mako-ai.messenger-bot-test-pipeline
+        name: mako-ai.facebook-messenger
       vars:
         graph_page_about: Find your next apartment
         graph_page_name: Mako AI
