@@ -1,3 +1,4 @@
+# Mako
 [![CircleCI](https://circleci.com/gh/mako-ai/mako.svg?style=shield&circle-token=1c7bbcb6cb0fb57e80aedd600886dac278d5da7b)](https://circleci.com/gh/mako-ai/mako)
 
 ## Docker
