@@ -1,3 +1,4 @@
 module.exports = {
-	onboard: require('./onboard')
+	onboard: require('./onboard'),
+	searchFilters: require('./search-filters'),
 };
