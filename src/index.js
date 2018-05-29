@@ -32,7 +32,7 @@ controller.setupWebserver(process.env.PORT, err => {
 
 // Dynamically load skills
 const skills = {};
-const normalizedPath = path.join(__dirname, 'skills');
+const normalizedPath = path.join(__dirname, 'skills', 'dynamic');
 fs.readdirSync(normalizedPath).forEach(file => {
 	const fileName = file.slice(0, -3);
 	skills[fileName] = require(path.join(normalizedPath, file));

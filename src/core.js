@@ -1,4 +1,6 @@
 /** Hard Coded - Core Functionalities */
+const path = require('path');
+const fs = require('fs');
 const messages = require('./messages');
 
 module.exports = controller => {
@@ -8,11 +10,10 @@ module.exports = controller => {
 	controller.on('facebook_optin', handleOnboard);
 	controller.hears('GET_STARTED', 'facebook_postback', handleOnboard);
 
-	controller.hears(
-		'filters',
-		['facebook_postback', 'message_received'],
-		(bot, message) => {
-			bot.reply(message, messages.searchFilters);
-		}
-	);
+	// Attach static skills
+	const normalizedPath = path.join(__dirname, 'skills', 'static');
+	fs.readdirSync(normalizedPath).forEach(file => {
+		const staticSkill = require(path.join(normalizedPath, file));
+		staticSkill(controller);
+	});
 };
