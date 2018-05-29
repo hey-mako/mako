@@ -1,7 +1,8 @@
 ---
 
-- hosts: all
-  connection: local
+- connection: local
+  gather_facts: yes
+  hosts: all
   tasks:
     - include_role:
         name: mako-ai.facebook-messenger
@@ -9,4 +10,3 @@
         graph_page_about: Find your next apartment
         graph_page_name: Mako AI
         graph_subscription_callback_url: https://{{ ansible_env.HEROKU_APP_NAME }}.herokuapp.com/facebook/receive
-        heroku_app_name: "{{ ansible_env.HEROKU_APP_NAME }}"
