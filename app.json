@@ -17,7 +17,7 @@
     },
     "ANSIBLE_CACHE_PLUGIN_CONNECTION": {
       "required": true,
-      "value": "/tmp"
+      "value": "/app"
     },
     "FACEBOOK_APP_ID": {
       "required": true
