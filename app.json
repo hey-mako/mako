@@ -42,7 +42,7 @@
   "repository": "https://github.com/mako-ai/mako",
   "scripts": {
     "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.facebook-messenger && ansible-playbook -i ansible/inventory ansible/site.yml",
-    "pr-predestroy": "ansible-playbook -i ansible/inventory ansible/site.yml --tags delete"
+    "pr-predestroy": "unset PYTHONHOME && unset PYTHONPATH && ansible-playbook -i ansible/inventory ansible/site.yml --tags delete"
   },
   "website": "https://mako-ai.github.io/"
 }

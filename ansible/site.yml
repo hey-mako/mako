@@ -25,4 +25,4 @@
           Content-Type: application/json
         method: PATCH
         return_content: yes
-        url: https://api.heroku.com/apps/{{ heroku_app_name }}/config-vars
+        url: https://api.heroku.com/apps/{{ ansible_env.HEROKU_APP_NAME }}/config-vars
