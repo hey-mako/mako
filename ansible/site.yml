@@ -1,7 +1,8 @@
 ---
 
-- hosts: all
-  connection: local
+- connection: local
+  gather_facts: yes
+  hosts: all
   tasks:
     - include_role:
         name: mako-ai.facebook-messenger
@@ -9,4 +10,20 @@
         graph_page_about: Find your next apartment
         graph_page_name: Mako AI
         graph_subscription_callback_url: https://{{ ansible_env.HEROKU_APP_NAME }}.herokuapp.com/facebook/receive
-        heroku_app_name: "{{ ansible_env.HEROKU_APP_NAME }}"
+
+    # https://devcenter.heroku.com/articles/platform-api-reference#config-vars-update
+    - name: Write the application access token and application verify token to Heroku configuration variables
+      uri:
+        body: |
+          {
+            "ACCESS_TOKEN": "{{ user.access_token }}",
+            "user-id": "{{ user.id }}"
+          }
+        body_format: json
+        headers:
+          Accept: application/vnd.heroku+json; version=3
+          Authorization: Bearer {{ ansible_env.HEROKU_API_KEY }}
+          Content-Type: application/json
+        method: PATCH
+        return_content: yes
+        url: https://api.heroku.com/apps/{{ ansible_env.HEROKU_APP_NAME }}/config-vars

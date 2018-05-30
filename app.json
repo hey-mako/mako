@@ -11,6 +11,20 @@
     "ACCESS_TOKEN": {
       "required": true
     },
+    "ANSIBLE_CACHE_PLUGIN": {
+      "required": true,
+      "value": "jsonfile"
+    },
+    "ANSIBLE_CACHE_PLUGIN_CONNECTION": {
+      "required": true,
+      "value": "/app"
+    },
+    "FACEBOOK_APP_ID": {
+      "required": true
+    },
+    "FACEBOOK_APP_SECRET": {
+      "required": true
+    },
     "HEROKU_API_KEY": {
       "required": true
     },
@@ -20,12 +34,6 @@
     "VERIFY_TOKEN": {
       "required": true
     },
-    "FACEBOOK_APP_ID": {
-      "required": true
-    },
-    "FACEBOOK_APP_SECRET": {
-      "required": true
-    },
     "WIT_AI_TOKEN": {
       "required": true
     }
@@ -33,7 +41,8 @@
   "name": "mako",
   "repository": "https://github.com/mako-ai/mako",
   "scripts": {
-    "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.facebook-messenger && ansible-playbook -i ansible/inventory ansible/site.yml"
+    "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.facebook-messenger && ansible-playbook -i ansible/inventory ansible/site.yml",
+    "pr-predestroy": "unset PYTHONHOME && unset PYTHONPATH && ansible-playbook -i ansible/inventory ansible/site.yml --tags delete"
   },
   "website": "https://mako-ai.github.io/"
 }
