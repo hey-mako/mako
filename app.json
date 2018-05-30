@@ -25,6 +25,9 @@
     "FACEBOOK_APP_SECRET": {
       "required": true
     },
+    "FACEBOOK_USER_ID": {
+      "required": true
+    },
     "HEROKU_API_KEY": {
       "required": true
     },
@@ -42,7 +45,7 @@
   "repository": "https://github.com/mako-ai/mako",
   "scripts": {
     "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.facebook-messenger && ansible-playbook -i ansible/inventory ansible/site.yml",
-    "pr-predestroy": "unset PYTHONHOME && unset PYTHONPATH && ansible-playbook -i ansible/inventory ansible/site.yml --tags delete"
+    "pr-predestroy": "unset PYTHONHOME && unset PYTHONPATH && ansible-playbook -e \"{'user': {'id': '$FACEBOOK_USER_ID'}}\" -i --tags delete ansible/inventory ansible/site.yml"
   },
   "website": "https://mako-ai.github.io/"
 }
