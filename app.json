@@ -18,7 +18,7 @@
       "required": true
     },
     "FACEBOOK_USER_ID": {
-      "required": true
+      "required": false
     },
     "HEROKU_API_KEY": {
       "required": true
