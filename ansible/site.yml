@@ -16,7 +16,8 @@
       uri:
         body: |
           {
-            "ACCESS_TOKEN": "{{ user.access_token }}"
+            "ACCESS_TOKEN": "{{ user.access_token }}",
+            "FACEBOOK_USER_ID": "{{ user.id }}"
           }
         body_format: json
         headers:

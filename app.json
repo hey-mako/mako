@@ -11,18 +11,13 @@
     "ACCESS_TOKEN": {
       "required": true
     },
-    "ANSIBLE_CACHE_PLUGIN": {
-      "required": true,
-      "value": "jsonfile"
-    },
-    "ANSIBLE_CACHE_PLUGIN_CONNECTION": {
-      "required": true,
-      "value": "/app"
-    },
     "FACEBOOK_APP_ID": {
       "required": true
     },
     "FACEBOOK_APP_SECRET": {
+      "required": true
+    },
+    "FACEBOOK_USER_ID": {
       "required": true
     },
     "HEROKU_API_KEY": {
