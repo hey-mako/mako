@@ -37,7 +37,7 @@
   "repository": "https://github.com/mako-ai/mako",
   "scripts": {
     "postdeploy": "unset PYTHONHOME && unset PYTHONPATH && ansible-galaxy install mako-ai.facebook-messenger && ansible-playbook -i ansible/inventory ansible/site.yml",
-    "pr-predestroy": "unset PYTHONHOME && unset PYTHONPATH && ansible-playbook -e \"{'user': 'id': '$FACEBOOK_USER_ID'}\" -i ansible/inventory --tags delete ansible/site.yml"
+    "pr-predestroy": "unset PYTHONHOME && unset PYTHONPATH && ansible-playbook -e \"{'user': {'id': '$FACEBOOK_USER_ID'}}\" -i ansible/inventory --tags destroy ansible/site.yml"
   },
   "website": "https://mako-ai.github.io/"
 }
