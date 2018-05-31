@@ -27,3 +27,9 @@
         method: PATCH
         return_content: yes
         url: https://api.heroku.com/apps/{{ ansible_env.HEROKU_APP_NAME }}/config-vars
+
+    - debug:
+        var: user.id
+      tags:
+        - never
+        - destroy
