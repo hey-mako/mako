@@ -16,4 +16,9 @@ services:
     volumes:
       - .:/srv
       - /srv/node_modules
+  postgres:
+    environment:
+      POSTGRES_PASSWORD: password
+    image: postgres:11-alpine
+    restart: always
 version: '3.6'
