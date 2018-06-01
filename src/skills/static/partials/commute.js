@@ -6,27 +6,6 @@ const SET_COMMUTE_TIME = 'COMMUTE:SET_COMMUTE_TIME';
 
 const commuteHandler = (bot, message) => {
 	bot.startConversation(message, (err, convo) => {
-		const validAddressReply = new fbTemplate.Text(
-			"👍🏼 Sweet, I'll remember: {{vars.commuteAddress}}, how do you plan on commuting?"
-		)
-			.addQuickReply('🚴 Bike', `${SET_COMMUTE_TYPE}::BIKE`)
-			.addQuickReply('🚶 Walk', `${SET_COMMUTE_TYPE}::WALK`)
-			.addQuickReply('🚗 Driving', `${SET_COMMUTE_TYPE}::DRIVE`)
-			.addQuickReply(
-				'🚌 Public Transportation',
-				`${SET_COMMUTE_TYPE}::PUBLIC_TRANSPORTATION`
-			)
-			.get();
-
-		convo.addMessage(validAddressReply, 'VALID_ADDRESS');
-		convo.addMessage(
-			{
-				text:
-					'😲 Looks like we are having troubles trying to find the correct commute address. Please try again later',
-			},
-			'ERROR'
-		);
-
 		convo.addQuestion(
 			'Where do you commute to?',
 			(response, convo) => convo.gotoThread('VALID_ADDRESS'),
@@ -44,10 +23,31 @@ const commuteHandler = (bot, message) => {
 				next();
 			} else {
 				convo.setVar('error', err);
-				convo.gotoThread('INO');
+				convo.gotoThread('ERROR');
 				next(err);
 			}
 		});
+
+		const validAddressReply = new fbTemplate.Text(
+			"👍🏼 Sweet, I'll remember: {{vars.commuteAddress}}, how do you plan on commuting?"
+		)
+			.addQuickReply('🚴 Bike', `${SET_COMMUTE_TYPE}::BIKE`)
+			.addQuickReply('🚶 Walk', `${SET_COMMUTE_TYPE}::WALK`)
+			.addQuickReply('🚗 Driving', `${SET_COMMUTE_TYPE}::DRIVE`)
+			.addQuickReply(
+				'🚌 Public Transportation',
+				`${SET_COMMUTE_TYPE}::PUBLIC_TRANSPORTATION`
+			)
+			.get();
+
+		convo.addMessage(validAddressReply, 'VALID_ADDRESS');
+		convo.addMessage(
+			{
+				text:
+					'😲 Looks like we are having troubles trying to find the correct commute address. Please try again or another address.',
+			},
+			'ERROR'
+		);
 	});
 };
 
