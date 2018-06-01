@@ -13,7 +13,9 @@ module.exports = controller => {
 	// Attach static skills
 	const normalizedPath = path.join(__dirname, 'skills', 'static');
 	fs.readdirSync(normalizedPath).forEach(file => {
-		const staticSkill = require(path.join(normalizedPath, file));
-		staticSkill(controller);
+		if (file.includes('.js')) {
+			const staticSkill = require(path.join(normalizedPath, file));
+			staticSkill(controller);
+		}
 	});
 };

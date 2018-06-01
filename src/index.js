@@ -40,6 +40,8 @@ fs.readdirSync(normalizedPath).forEach(file => {
 
 // Catch all to be processed for NLP
 controller.hears('.*', 'message_received', (bot, message) => {
+	console.log(JSON.stringify(message));
+	console.log(message.payload);
 	const errorReply = () =>
 		bot.reply(
 			message,
@@ -61,3 +63,6 @@ controller.hears('.*', 'message_received', (bot, message) => {
 		errorReply();
 	}
 });
+
+// Load Middlewares
+require('./middlewares/quick-reply')(controller);

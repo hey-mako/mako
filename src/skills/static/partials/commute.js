@@ -1,46 +1,73 @@
 const fbTemplate = require('fb-message-builder');
+const {extractPayloadData} = require('../../../libs/helpers');
 
-const SET_ADDRESS = 'COMMUTE:SET_ADDRESS';
-const INCORRECT_ADDRESS = 'COMMUTE:INCORRECT_ADDRESS';
+const SET_COMMUTE_TYPE = 'COMMUTE:SET_COMMUTE_TYPE';
+const SET_COMMUTE_TIME = 'COMMUTE:SET_COMMUTE_TIME';
 
 const commuteHandler = (bot, message) => {
 	bot.startConversation(message, (err, convo) => {
+		const validAddressReply = new fbTemplate.Text(
+			"👍🏼 Sweet, I'll remember: {{vars.commuteAddress}}, how do you plan on commuting?"
+		)
+			.addQuickReply('🚴 Bike', `${SET_COMMUTE_TYPE}::BIKE`)
+			.addQuickReply('🚶 Walk', `${SET_COMMUTE_TYPE}::WALK`)
+			.addQuickReply('🚗 Driving', `${SET_COMMUTE_TYPE}::DRIVE`)
+			.addQuickReply(
+				'🚌 Public Transportation',
+				`${SET_COMMUTE_TYPE}::PUBLIC_TRANSPORTATION`
+			)
+			.get();
+
+		convo.addMessage(validAddressReply, 'VALID_ADDRESS');
+		convo.addMessage(
+			{
+				text:
+					'😲 Looks like we are having troubles trying to find the correct commute address. Please try again later',
+			},
+			'ERROR'
+		);
+
 		convo.addQuestion(
 			'Where do you commute to?',
-			(response, convo) => convo.gotoThread('ADDRESS_CHECK'),
+			(response, convo) => convo.gotoThread('VALID_ADDRESS'),
 			{key: 'rawCommuteAddress'},
 			'default'
 		);
 
-		convo.beforeThread('ADDRESS_CHECK', (convo, next) => {
+		convo.beforeThread('VALID_ADDRESS', (convo, next) => {
 			const rawAddress = convo.extractResponse('rawCommuteAddress');
-			const suggestedAddress = 'Nada';
+			const suggestedAddress = rawAddress;
 
-			if (rawAddress) {
-				const message = new fbTemplate.Text(
-					`Is this address right? \n ${suggestedAddress}`
-				);
-				message
-					.addQuickReply('Yup', `${SET_ADDRESS}::${suggestedAddress}`)
-					.addQuickReply('No', INCORRECT_ADDRESS);
-
-				convo.say(message);
+			// Add address check here
+			if (suggestedAddress) {
+				convo.setVar('commuteAddress', '[VALIDATED ADDRESS]');
+				next();
+			} else {
+				convo.setVar('error', err);
+				convo.gotoThread('INO');
+				next(err);
 			}
-			next();
 		});
 	});
 };
 
 const load = controller => {
-	controller.hears(INCORRECT_ADDRESS, 'message_received', (bot, message) => {
-		bot.say(
-			message,
-			'😲 Looks like we are having troubles trying to find the correct commute address. Please try again later'
-		);
+	controller.hears(SET_COMMUTE_TYPE, 'facebook_quick_reply', (bot, message) => {
+		// Will use this when database is available
+		// const commuteType = extractPayloadData(message.payload);
+		const timeReply = new fbTemplate.Text(`What's the max commute time?`)
+			.addQuickReply('10 Mins', `${SET_COMMUTE_TIME}::10`)
+			.addQuickReply('30 Mins', `${SET_COMMUTE_TIME}::30`)
+			.addQuickReply('45 Mins', `${SET_COMMUTE_TIME}::45`)
+			.addQuickReply('1 Hour', `${SET_COMMUTE_TIME}::60`)
+			.addQuickReply('1:30 Hours', `${SET_COMMUTE_TIME}::90`)
+			.get();
+		bot.reply(message, timeReply);
 	});
 
-	controller.hears(SET_ADDRESS, 'message_received', (bot, message) => {
-		bot.say(message, ` ✅ Got it! ${message.text}`);
+	controller.hears(SET_COMMUTE_TIME, 'facebook_quick_reply', (bot, message) => {
+		const commuteTime = extractPayloadData(message.payload);
+		bot.reply(message, `Saved! ${commuteTime}`);
 	});
 };
 

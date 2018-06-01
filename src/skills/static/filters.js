@@ -2,15 +2,15 @@ const messages = require('../../messages');
 const commute = require('./partials/commute');
 
 const budgetHandler = (bot, message) => {
-
+	bot.reply(message, 'budget set');
 };
 
 const petsHandler = (bot, message) => {
-
+	bot.reply(message, 'budget set');
 };
 
 const typeHandler = (bot, message) => {
-
+	bot.reply(message, 'budget set');
 };
 
 module.exports = controller => {
@@ -24,9 +24,9 @@ module.exports = controller => {
 
 	commute.load(controller);
 
-	controller.hears('FILTER:COMMUTE', 'facebook_postback', commute.handler);
-	controller.hears('FILTER:BUDGET', 'facebook_postback', budgetHandler);
-	controller.hears('FILTER:PETS', 'facebook_postback', petsHandler);
-	controller.hears('FILTER:BUDGET', 'facebook_postback', budgetHandler);
-	controller.hears('FILTER:TYPE', 'facebook_postback', typeHandler);
+	controller.hears('FILTER:COMMUTE', 'facebook_quick_reply', commute.handler);
+	controller.hears('FILTER:BUDGET', 'facebook_quick_reply', budgetHandler);
+	controller.hears('FILTER:PETS', 'facebook_quick_reply', petsHandler);
+	controller.hears('FILTER:BUDGET', 'facebook_quick_reply', budgetHandler);
+	controller.hears('FILTER:TYPE', 'facebook_quick_reply', typeHandler);
 };
