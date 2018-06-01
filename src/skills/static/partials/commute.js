@@ -60,7 +60,7 @@ const load = controller => {
 			.addQuickReply('30 Mins', `${SET_COMMUTE_TIME}::30`)
 			.addQuickReply('45 Mins', `${SET_COMMUTE_TIME}::45`)
 			.addQuickReply('1 Hour', `${SET_COMMUTE_TIME}::60`)
-			.addQuickReply('1:30 Hours', `${SET_COMMUTE_TIME}::90`)
+			.addQuickReply('1.5 Hours', `${SET_COMMUTE_TIME}::90`)
 			.get();
 		bot.reply(message, timeReply);
 	});
