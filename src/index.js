@@ -32,7 +32,7 @@ controller.setupWebserver(process.env.PORT, err => {
 
 // Dynamically load skills
 const skills = {};
-const normalizedPath = path.join(__dirname, 'skills');
+const normalizedPath = path.join(__dirname, 'skills', 'dynamic');
 fs.readdirSync(normalizedPath).forEach(file => {
 	const fileName = file.slice(0, -3);
 	skills[fileName] = require(path.join(normalizedPath, file));
@@ -40,6 +40,7 @@ fs.readdirSync(normalizedPath).forEach(file => {
 
 // Catch all to be processed for NLP
 controller.hears('.*', 'message_received', (bot, message) => {
+	console.log('mesage', message.text);
 	const errorReply = () =>
 		bot.reply(
 			message,
@@ -61,3 +62,6 @@ controller.hears('.*', 'message_received', (bot, message) => {
 		errorReply();
 	}
 });
+
+// Load Middlewares
+require('./middlewares')(controller);

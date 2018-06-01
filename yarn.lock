@@ -1119,6 +1119,10 @@ botbuilder@^3.8.4:
     sprintf-js "^1.0.3"
     url-join "^1.1.0"
 
+botkit-fb-quick-reply@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/botkit-fb-quick-reply/-/botkit-fb-quick-reply-0.1.0.tgz#379f5913a252e4154b699690ee8a4e7203442912"
+
 botkit-studio-sdk@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/botkit-studio-sdk/-/botkit-studio-sdk-1.0.8.tgz#7e8707bfb8462813c08155d3a88a5a490845ccf5"
