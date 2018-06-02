@@ -61,3 +61,22 @@ controller.hears('.*', 'message_received', (bot, message) => {
 		errorReply();
 	}
 });
+
+const { Client } = require('pg');
+const client = new Client({
+	user: 'postgres',
+	host: 'postgres',
+	database: 'postgres',
+	password: 'password',
+	port: 5432,
+});
+
+const start = async () => {
+	await client.connect();
+
+	const res = await client.query('SELECT $1::text as message', ['Hello world!'])
+	console.log('GOT ROW', res.rows[0].message);
+	await client.end();
+};
+
+start();
