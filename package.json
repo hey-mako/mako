@@ -16,6 +16,7 @@
   "homepage": "https://github.com/jasonwalsh/prototype#readme",
   "dependencies": {
     "botkit": "^0.6.13",
+    "botkit-fb-quick-reply": "^0.1.0",
     "fb-message-builder": "^2.2.0"
   },
   "devDependencies": {
