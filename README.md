@@ -15,6 +15,6 @@ The `-d` flag instructs Docker to run the containers in 'detached' mode.
 
 ## Deployment
 
-The following repository contains the Terraform configurations for the Heroku deployment pipeline: https://github.com/jasonwalsh/terraform-configurations.
+The following repository contains the Terraform configurations for the Heroku deployment pipeline: https://github.com/mako-ai/terraform-heroku-configuration.
 
 Please refer to the README for instructions on creating the necessary pipeline resources.
