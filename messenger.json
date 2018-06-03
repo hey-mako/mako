@@ -1,0 +1,5 @@
+{
+  "graph_page_about": "Find your next apartment",
+  "graph_page_name": "Mako AI",
+  "graph_subscription_callback_url": "https://${HEROKU_APP_NAME}.herokuapp.com/facebook/receive"
+}
